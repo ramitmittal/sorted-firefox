@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Sorted",
+  "version": "0.1",
+
+  "description": "Sorts bookmarks neatly into folders based on keywords provided by the user.",
+  "homepage_url": "https://github.com/ramitmittal",
+  "icons": {
+    "48": "icons/icon-48.png"
+  },
+
+  "permissions": [
+    "bookmarks",
+    "activeTab"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/icon-32.png",
+    "default_title": "Sorted",
+    "default_popup": "popup/popup.html"
+  }
+
+}
