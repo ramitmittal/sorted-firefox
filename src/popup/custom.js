@@ -72,11 +72,17 @@ async function checkFolders3(result2) {
 
 
 async function checkFolders4(result3) {
+    // result3 is ChildNode of Sorted Bookmarks
 
+    "use strict";
+
+    // get ID of Other Bookmarks before proceeding
     var OtherBookmarks = await browser.bookmarks.search({title: "Other Bookmarks"});
-    console.log("other marks " + OtherBookmarks[0].id);
 
+    // get all children of Other Bookmarks
     var Children = await browser.bookmarks.getChildren(OtherBookmarks[0].id);
+
+    // compare and move
     for (var x of Children) {
 	if (x.title !== "Sorted Bookmarks") {
 	    var title = x.title.toLowerCase().split(" ");
@@ -89,21 +95,7 @@ async function checkFolders4(result3) {
 
 
 function onRejected(error) {
+    // add a single error message to display in the popup
+
 }
 
-function logItems(bookmarkItem) {
-  if (bookmarkItem.title) {
-    console.log(bookmarkItem.title);
-  } else {
-    console.log("Folder");
-  }
-  if (bookmarkItem.children) {
-    for (child of bookmarkItem.children) {
-      logItems(child);
-    }
-  }
-}
-
-function logTree(bookmarkItems) {
-  logItems(bookmarkItems[0]);
-}
