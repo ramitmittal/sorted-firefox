@@ -100,7 +100,7 @@ async function checkFolders4(result3) {
     // compare and move
     for (var x of Children) {
 	if (x.title !== "Sorted Bookmarks") {
-	    var title = x.title.toLowerCase().split(" ");
+	    var title = x.title.toLowerCase().split(/[, .]/);
 	    if (title.includes(result3.title.toLowerCase())) {
 		browser.bookmarks.move(x.id, {parentId: result3.id});
 	    }
