@@ -5,7 +5,9 @@ var rbtn = document.getElementById("randomized");
 rbtn.addEventListener("click", bookFunc);
 
 var arrayIn = [];
+var MainNode;
 var idOfMainNode = "";
+var check0 = false;
 
 function bookFunc(event) {
 
@@ -52,6 +54,7 @@ function checkFolders1(result0) {
 }
 
 function checkFolders2(result1) {
+	MainNode = result1
     idOfMainNode = result1.id;
     var promise2 = browser.bookmarks.getChildren(result1.id);
     promise2.then(checkFolders3, onRejected);
@@ -65,14 +68,26 @@ async function checkFolders3(result2) {
     for (var newNode of arrayIn) {
 	var promise3 = await browser.bookmarks.create({title: newNode, parentId: idOfMainNode});
     }
+
+	// this is a cheap hack for the 1st run problem, ie won't call check4 for newly created folders
+	// so we make it loop again from check2
+	if (check0 === false) {
+	check0 = true;
+	checkFolders2(MainNode);	
+}
+	else {
     for (var sortedNode of result2) {
-	checkFolders4(sortedNode);
+	  checkFolders4(sortedNode);
     }
+
+	}
+
 }
 
 
 async function checkFolders4(result3) {
     // result3 is ChildNode of Sorted Bookmarks
+	// this is the last function it does: search, compare and move
 
     "use strict";
 
