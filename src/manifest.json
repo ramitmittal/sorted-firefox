@@ -4,7 +4,7 @@
   "version": "0.1.1",
 
   "description": "Sort bookmarks neatly into folders based on keywords provided by the user.",
-  "homepage_url": "https://github.com/ramitmittal",
+  "homepage_url": "https://ramitmittal.github.io/sorted",
   "icons": {
     "48": "icons/icon-48.png"
   },
