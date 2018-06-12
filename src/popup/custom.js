@@ -21,12 +21,12 @@ function bookFunc(event) {
     arrayIn = bArray;
 
     var ulist = document.createElement("ul");
-    ulist.className += "list-group p-0"
 
     for (var value of arrayIn) {
 	let letty = document.createElement("li");
-	letty.className += "list-group-item my-0 py-0";
-	letty.innerHTML = value;
+	letty.className += "my-0 py-0";
+	var text = document.createTextNode(value);	
+	letty.appendChild(text);
 	ulist.appendChild(letty);
     }
     

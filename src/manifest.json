@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Sorted",
-  "version": "0.1.1",
+  "version": "1.0",
 
   "description": "Sort bookmarks neatly into folders based on keywords provided by the user.",
   "homepage_url": "https://ramitmittal.github.io/sorted",
@@ -10,7 +10,7 @@
   },
 
   "permissions": [
-    "bookmarks",
+    "bookmarks"
   ],
 
   "browser_action": {
