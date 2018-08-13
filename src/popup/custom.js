@@ -1,116 +1,101 @@
-var kai = document.getElementById("result");
-kai.style.display = "none";
+var bookmarks = browser.bookmarks;
 
+var arrayIn = [];
+
+// The result div where keyword list will be displayed.
+var result_div = document.getElementById("result");
+result_div.style.display = "none";
+
+// User clicks this button to submit keywords.
 var rbtn = document.getElementById("randomized");
 rbtn.addEventListener("click", bookFunc);
 
-var arrayIn = [];
-var MainNode;
-var idOfMainNode = "";
-var check0 = false;
 
 function bookFunc(event) {
 
-    document.getElementById("asker").style.display = "none";
+    document.getElementById("asker").style.display = "none"; // Hide the div where keywords are entered.
+    var rawIn = document.getElementById("userIn").value; // This is the string of keywords entered by the user.
 
-    var rawIn = document.getElementById("userIn").value;
+    // Split the keywords into an array.
     var re = /\s*,\s*/;
     arrayIn = rawIn.split(re)
+    
+    // Sanitize the array elements.
     bArray = []
     for (var item of arrayIn) { bArray.push(item.charAt(0).toUpperCase() + item.substr(1).toLowerCase()); }
     arrayIn = bArray;
 
+    // Display the keywords on which bookmarks are sorted.
     var ulist = document.createElement("ul");
-
     for (var value of arrayIn) {
-	let letty = document.createElement("li");
-	letty.className += "my-0 py-0";
-	var text = document.createTextNode(value);	
-	letty.appendChild(text);
-	ulist.appendChild(letty);
+        let letty = document.createElement("li");
+        letty.className += "my-0 py-0";
+        var text = document.createTextNode(value);	
+        letty.appendChild(text);
+        ulist.appendChild(letty);
     }
+    result_div.appendChild(ulist);
+    result_div.style.display = "block";
     
-    kai.appendChild(ulist);
-    kai.style.display = "block";
-    
-
-    checkFolders0();
+    // Start the actual sorting.
+    sortIt();
 }
 
+async function sortIt() {
+    
+    var search_for_sorted = await bookmarks.search({title: "Sorted Bookmarks"});    
 
-function checkFolders0() {
-    var promise0 = browser.bookmarks.search({title: "Sorted Bookmarks"});
-    promise0.then(checkFolders1, onRejected);
-}
-
-function checkFolders1(result0) {
-    if (result0.length) {
-	checkFolders2(result0[0]);
+    var sorted_folder;
+    if (search_for_sorted.length) {
+        sorted_folder = search_for_sorted[0];
     }
     else {
-	var promise1 = browser.bookmarks.create({title: "Sorted Bookmarks"})
-	promise1.then(checkFolders2, onRejected);
+        sorted_folder = await bookmarks.create({title: "Sorted Bookmarks"});
     }
-}
 
-function checkFolders2(result1) {
-	MainNode = result1
-    idOfMainNode = result1.id;
-    var promise2 = browser.bookmarks.getChildren(result1.id);
-    promise2.then(checkFolders3, onRejected);
-}
-
-async function checkFolders3(result2) {
-    for (var sortedNode of result2) {
-	arrayIn = arrayIn.filter(title => title != sortedNode.title);
+    var nodes_in_sorted_folder = await bookmarks.getChildren(sorted_folder.id);
+    
+    if (nodes_in_sorted_folder.length) {
+        for (var sortedNode of nodes_in_sorted_folder) {
+            arrayIn = arrayIn.filter(title => title != sortedNode.title);
+        }
     }
 
     for (var newNode of arrayIn) {
-	var promise3 = await browser.bookmarks.create({title: newNode, parentId: idOfMainNode});
+        var createdNode = await bookmarks.create({title: newNode, parentId: sorted_folder.id});
     }
 
-	// this is a cheap hack for the 1st run problem, ie won't call check4 for newly created folders
-	// so we make it loop again from check2
-	if (check0 === false) {
-	check0 = true;
-	checkFolders2(MainNode);	
-}
-	else {
-    for (var sortedNode of result2) {
-	  checkFolders4(sortedNode);
-    }
+    var nodes_in_sorted_folder = await bookmarks.getChildren(sorted_folder.id);
+    var other_bookmarks = await bookmarks.search({title: "Other Bookmarks"});
+    var other_bookmarks_children = await bookmarks.getChildren(other_bookmarks[0].id);
+    
+    compare_and_move(other_bookmarks_children, nodes_in_sorted_folder);
 
-	}
-
-}
-
-
-async function checkFolders4(result3) {
-    // result3 is ChildNode of Sorted Bookmarks
-	// this is the last function it does: search, compare and move
-
-    "use strict";
-
-    // get ID of Other Bookmarks before proceeding
-    var OtherBookmarks = await browser.bookmarks.search({title: "Other Bookmarks"});
-
-    // get all children of Other Bookmarks
-    var Children = await browser.bookmarks.getChildren(OtherBookmarks[0].id);
-
-    // compare and move
-    for (var x of Children) {
-	if (x.title !== "Sorted Bookmarks") {
-	    var title = x.title.toLowerCase().split(/[, .]/);
-	    if (title.includes(result3.title.toLowerCase())) {
-		browser.bookmarks.move(x.id, {parentId: result3.id});
-	    }
-	}
+    var menu_check = document.getElementById("menu_folder_check");
+    if (menu_check.checked) {
+        var menu_bookmarks = await bookmarks.search({title: "Bookmarks Menu"});
+        var menu_bookmarks_children = await bookmarks.getChildren(menu_bookmarks[0].id);
+        compare_and_move(menu_bookmarks_children, nodes_in_sorted_folder);
     }
 }
 
+function compare_and_move(other_bookmarks_children, nodes_in_sorted_folder) {
+    for (var x of other_bookmarks_children) {
+
+        if (x.title !== "Sorted Bookmarks") {
+            var split_title = x.title.toLowerCase().split(/[, .]/);
+
+            for (var y of nodes_in_sorted_folder) {
+
+                if (split_title.includes(y.title.toLowerCase())) {
+                    bookmarks.move(x.id, {parentId: y.id});
+                }
+            }
+        }
+    }
+}
 
 function onRejected(error) {
     // add a single error message to display in the popup
-
 }
 
