@@ -18,7 +18,7 @@
     "browser_style": true,
     "default_icon": "icons/icon-32.png",
     "default_title": "Sorted",
-    "default_popup": "popup/popup.html"
+    "default_popup": "popup/dist/popup.html"
   }
 
 }
