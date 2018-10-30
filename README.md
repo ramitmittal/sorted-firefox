@@ -5,14 +5,17 @@ Sorted is tested to work with Mozilla Firefox. Compatibility with other browsers
 ### Usage
 Install from [AMO](https://addons.mozilla.org/en-GB/firefox/addon/sort_bookmarks/).
 
-### Instructions for Dev setup
+### Instructions for Development
 * Clone the repository.
+* Compile TypeScript file
+    * cd src/popup
+    * tsc src/custom.ts --outDir dist/
 * Open about:debugging in Firefox
    * click on ```Load Temporary Addon```.
    * select any file from the ```sorted/src``` folder.
 * Click on the new button appearing on the browser toolbar.
 
-### Resources
+### Other Resources
 * A small video screencast can be found [here](https://youtu.be/7TvW5J2sIN8).
 
 ### Meta
