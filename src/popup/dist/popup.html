@@ -9,32 +9,25 @@
 <body>
   <div class="container-fluid">
 
-    <h3 class="text-success text-center m-3">Sort Bookmarks</h3>
+    <h3 class="text-success text-center m-3">Sorted</h3>
 
+    <hr class="greenline">
     <div id="asker">
       <p>Please enter the words that frequently appear<br>in the titles of your bookmarks.<br> Separate all keywords by commas.</p>
       <textarea id="userIn"></textarea>
 
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="menu_folder_check">
-        <label class="form-check-label" for="menu_folder_check">Include Bookmarks Menu folder.</label>
-        <br>
-        <input type="checkbox" class="form-check-input" id="delete_folder_check">
-        <label class="form-check-label" for="delete_folder_check">Move items from other folders.</label>
-      </div>
-        
-
       <button class="btn btn-sm btn-outline-success mb-4" id="randomized">Sort</button>
     </div>
 
-    <div id="result" class="pb-4">
+    <hr class="greenline">
+    <div id="result" class="pb-4 d-none">
       <p id="teller">Sorting bookmarks based on the following keywords.</p>
     </div>
 
   </div>
 
 
-  <script src="main.js"></script>
+  <script src="custom.js"></script>
 </body>
 
 </html>
