@@ -18,11 +18,11 @@
     "browser_style": true,
     "default_icon": "icons/icon-32.png",
     "default_title": "Sorted",
-    "default_popup": "popup/dist/popup.html"
+    "default_popup": "popup/popup.html"
   },
 
   "background": {
-    "scripts": ["popup/dist/monitor.js"]
+    "scripts": ["popup/monitor.js"]
   }
 
 }
