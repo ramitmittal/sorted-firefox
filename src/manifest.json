@@ -19,6 +19,10 @@
     "default_icon": "icons/icon-32.png",
     "default_title": "Sorted",
     "default_popup": "popup/dist/popup.html"
+  },
+
+  "background": {
+    "scripts": ["popup/dist/monitor.js"]
   }
 
 }

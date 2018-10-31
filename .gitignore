@@ -2,3 +2,4 @@
 src/popup/dist/custom\.js
 
 node_modules/
+dist/
