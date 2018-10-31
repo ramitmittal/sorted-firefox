@@ -6,8 +6,11 @@ let arrayIn: string[] = [];
 
 window.onload = (event) => {
     // User clicks this button to submit keywords.
-    var rbtn = document.getElementById("randomized");
+    let rbtn = document.getElementById("randomized");
     rbtn.addEventListener("click", bookFunc);
+
+    initToggler();
+
 }
 
 
@@ -117,3 +120,61 @@ function compareAndMove(otherBookmarksChildren: Array<any>, nodesInSortedFolder:
     }
 }
 
+
+function toggleMonitor() {
+    let toggler = document.getElementById("toggler");
+
+    let setting: any;
+
+    browser.storage.sync.get().then((result) => {
+
+        setting = result['monitor'];
+        if (setting) {
+
+            browser.storage.sync.set({"monitor": false}).then((result => {
+                toggler.innerHTML = "OFF";
+                toggler.classList.remove("btn-success");
+                toggler.classList.add("btn-warning");                
+            }));
+        
+        }
+        else {
+
+            browser.storage.sync.set({"monitor": true}).then((result) => {
+                toggler.innerHTML = "ON";
+                toggler.classList.remove("btn-warning");
+                toggler.classList.add("btn-success");
+    
+            });
+        }
+
+    });
+
+}
+
+function initToggler() {
+    let toggler = document.getElementById("toggler");
+
+    let setting: any;
+
+    browser.storage.sync.get().then((result) => {
+    
+        setting = result['monitor'];
+        if (setting) {
+            toggler.innerHTML = "ON";
+            toggler.classList.remove("btn-warning");
+            toggler.classList.add("btn-success");
+        }
+        else {
+            toggler.innerHTML = "OFF";
+            toggler.classList.remove("btn-success");
+            toggler.classList.add("btn-warning");
+
+        }
+
+        toggler.addEventListener("click", toggleMonitor);
+
+
+    });
+
+}

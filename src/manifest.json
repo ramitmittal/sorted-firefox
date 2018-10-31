@@ -11,8 +11,15 @@
   },
 
   "permissions": [
-    "bookmarks"
+    "bookmarks",
+    "storage"
   ],
+
+  "applications": {
+    "gecko": {
+      "id": "sorted@example.com"
+    }
+  },
 
   "browser_action": {
     "browser_style": true,

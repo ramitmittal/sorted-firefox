@@ -1,5 +1,5 @@
 *~
-src/popup/dist/custom\.js
+src/popup/*.js
 
 node_modules/
 dist/

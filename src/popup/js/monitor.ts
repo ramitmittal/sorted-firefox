@@ -1,3 +1,25 @@
+declare var browser: any
+
+let listener;
+
 setInterval(function() {
-    console.log("it's happening")
-}, 1000);
+
+    browser.storage.sync.get().then((result) => {
+
+        if (result['monitor']) {
+
+            listener = browser.bookmarks.onCreated.addListener(() => {
+        
+                // call this function on bookmark add        
+                console.log('bookmark added')
+            })
+        }
+        else {
+            browser.bookmarks.onCreated.removeListener(listener);
+        }
+
+    })
+    
+
+}, 6000)
+
