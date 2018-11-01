@@ -8,13 +8,13 @@ Install from [AMO](https://addons.mozilla.org/en-GB/firefox/addon/sort_bookmarks
 ### Instructions for Development
 * Clone the repository.
 * Make changes in src/
+* Build by compiling .ts file
+    * python3 build.py
 * Test in Firefox
    * open about:debugging in Firefox
    * click on ```Load Temporary Addon```.
-   * select any file from the ```sorted/src``` folder.
-    * Click on the new button appearing on the browser toolbar.
-* Build by compiling .ts file
-    * python3 build.py
+   * select any file from the ```dist/sorted``` folder.
+   * click on the new button appearing on the browser toolbar.
 
 ### Other Resources
 * A small video screencast can be found [here](https://youtu.be/7TvW5J2sIN8).
