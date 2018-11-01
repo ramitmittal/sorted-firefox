@@ -159,13 +159,12 @@ async function main0() {
     sortedFolder = await findSortedFolder();
     
     if (sortedFolder === null) {
+        sortedFolder = await createSortedFolder();
     }
-    else {
-        sortedSubFolders = await findSortedSubFolders(sortedFolder);
+    sortedSubFolders = await findSortedSubFolders(sortedFolder);
 
-        if (sortedSubFolders !== null) {
-            initText(sortedSubFolders);
-        }
+    if (sortedSubFolders !== null) {
+        initText(sortedSubFolders);
     }
 
     // User clicks this button to submit keywords.
@@ -187,7 +186,7 @@ async function main1() {
     else {
 
         // check if new folders need to be created
-        createNewFolders(sortedSubFolders, bArray, sortedFolder);
+        await createNewFolders(sortedSubFolders, bArray, sortedFolder);
 
         // update sortedSubFolders
         sortedSubFolders = await findSortedSubFolders(sortedFolder);
