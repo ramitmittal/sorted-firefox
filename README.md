@@ -9,7 +9,7 @@ Install from [AMO](https://addons.mozilla.org/en-GB/firefox/addon/sort_bookmarks
 * Clone the repository.
 * Compile TypeScript file
     * cd src/popup
-    * tsc src/custom.ts --outDir dist/
+    * tsc js/custom.ts --outDir ./
 * Open about:debugging in Firefox
    * click on ```Load Temporary Addon```.
    * select any file from the ```sorted/src``` folder.
