@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Sorted",
-  "version": "2.0",
+  "version": "2.1",
 
   "description": "Makes managing bookmarks easier by sorting them into folders based on keywords provided by the user.",
   "homepage_url": "https://ramitmittal.github.io/sorted",
@@ -18,7 +18,7 @@
     "browser_style": true,
     "default_icon": "icons/icon-32.png",
     "default_title": "Sorted",
-    "default_popup": "popup/dist/popup.html"
+    "default_popup": "popup/popup.html"
   }
 
 }

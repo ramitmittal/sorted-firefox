@@ -1,1 +1,5 @@
 *~
+src/popup/*.js
+
+node_modules/
+dist/
