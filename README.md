@@ -8,6 +8,8 @@ Install from [AMO](https://addons.mozilla.org/en-GB/firefox/addon/sort_bookmarks
 ### Instructions for Development
 * Clone the repository.
 * Make changes in src/
+* Install TypeScipt
+    * npm install typescript
 * Build by compiling .ts file
     * python3 build.py
 * Test in Firefox
