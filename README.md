@@ -22,4 +22,4 @@ Install from [addons.mozilla.org](https://addons.mozilla.org/en-GB/firefox/addon
 ### Meta
 * Distributed under GNU GPLv3. See **LICENSE** for more information.
 * Inspired by [The Sorting Hat](https://www.pottermore.com/explore-the-story/the-sorting-hat).
-* Contributions and suggestions are welcome. Please consider opening an issue or submitting a pull requests.
+* Contributions and suggestions are welcome. Please consider opening an issue or submitting a pull request.
