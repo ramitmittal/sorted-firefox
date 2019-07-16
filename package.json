@@ -1,0 +1,35 @@
+{
+  "name": "sorted",
+  "version": "2.2.0",
+  "description": "A Mozilla Firefox extension.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramitmittal/sorted.git"
+  },
+  "author": "Ramit Mittal",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "build": "rm -rf dist/ && parcel build src/popup/popup.html --public-url '.' --out-dir dist/popup && cp -r src/manifest.json src/icons dist/"
+  },
+  "bugs": {
+    "url": "https://github.com/ramitmittal/sorted/issues"
+  },
+  "homepage": "https://github.com/ramitmittal/sorted#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-transform-runtime": "^7.5.0",
+    "@babel/preset-env": "^7.5.4",
+    "cssnano": "^4.1.10",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.0",
+    "parcel-bundler": "^1.12.3",
+    "sass": "^1.22.5"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "@babel/runtime": "^7.5.4",
+    "bulma": "^0.7.5"
+  }
+}

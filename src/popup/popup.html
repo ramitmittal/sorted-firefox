@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-
-<html>
-  <head>
+<html lang="en-US">
+<head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="bootstrap.min.css"/>
-  </head>
+    <title></title>
+</head>
 
 <body>
-  <div class="container-fluid">
-
-    <h3 class="text-success text-center mt-2">Sorted</h3>
-
-    <hr>
-    <div id="asker">
-      <p>Please enter the words that frequently appear<br>in the titles of your bookmarks.<br> Separate all keywords by commas.</p>
-      <textarea id="userIn"></textarea>
-
-      <button class="btn btn-sm btn-outline-success mb-4" id="randomized">Sort</button>
+    <div style="width:300px;">
+        <div id="main-dialog" class="dropdown-content">
+            <a class="dropdown-item is-active is-size-5" style="margin-bottom:5px;">
+                Sorted
+            </a>
+            <a id="main-sortlink" class="dropdown-item">
+                Organize bookmarks
+            </a>
+            <a id="main-unsortlink" class="dropdown-item">
+                Flatten bookmarks
+            </a>
+            <hr class="dropdown-divider">
+            <a href="https://ramitmittal.github.io/sorted/" class="dropdown-item">
+                Learn more
+            </a>
+        </div>
+        <div id="unsort-dialog" class="dropdown-content" hidden>
+            <div class="dropdown-item">
+                <p>This will delete <strong>all sorted folders</strong> moving the bookmarks back to their original location.</p>
+                <div class="is-flex" style="justify-content:center; margin-top:5px;">
+                    <a id="unsort-accept" class="button light">Accept</a>
+                    <span style="min-width:5px;"></span>
+                    <a id="unsort-reject" class="button is-link">Reject</a>
+                </div>
+            </div>
+        </div>
+        <div id="sort-dialog" class="card" hidden>
+            <div class="dropdown-content">
+                <div class="dropdown-item">
+                    <p>Create <strong>tags</strong> to sort your bookmarks on.</p>
+                </div>
+            </div>
+            <div class="dropdown-content" id="sort-list">
+                <a href="#" class="dropdown-item">
+                    <span class="delete is-small" style="margin-right:10px; top:3px;"></span>
+                    <input id="sort-input" class="input is-small" type="text" placeholder="tech, programming, software">
+                </a>
+                <div href="#" class="is-flex" style="margin-top:3px; justify-content: space-between;">
+                    <a id="sort-new" class="button is-small is-light" style="margin-left:15px !important;">Add</a>
+                    <a id="sort-go" class="button is-small is-link" style="margin-right:15px;">Sort</a>
+                </div>
+                <hr class="dropdown-divider">
+                <a id="sort-back" href="#" class="dropdown-item">
+                    Back
+                </a>
+            </div>
+        </div>
     </div>
-
-    <div id="result" class="pb-4 d-none">
-      <p id="teller">Sorting bookmarks based on the following keywords.</p>
-    </div>
-
-    <hr>
-    <div>
-      <p><a href="http://ramitmittal.github.io/sorted" class="text-dark">Help</a> | <a href="http://github.io/ramitmittal/sorted" class="text-dark">Github</a> | v2.1</p>
-    </div>
-
-  </div>
-
-  <script src="main.js"></script>
+<script src="js/main.js"></script>
 </body>
 
 </html>

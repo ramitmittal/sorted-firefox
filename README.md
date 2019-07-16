@@ -1,29 +1,25 @@
 # Sorted
-A web extension to sort bookmarks into folders based on keywords entered by the user.  
+A web extension to sort bookmarks into folders based on keywords entered by the user. 
 Sorted is tested to work with Mozilla Firefox. Compatibility with other browsers is planned.
 
 ### Usage
-Install from [AMO](https://addons.mozilla.org/en-GB/firefox/addon/sort_bookmarks/).
+Install from [addons.mozilla.org](https://addons.mozilla.org/en-GB/firefox/addon/sort_bookmarks/).
 
 ### Instructions for Development
 * Clone the repository.
-* Make changes in src/
-* Install TypeScipt
-    * npm install typescript
-* Build by compiling .ts file
-    * python3 build.py
+* Install and Build
+    * `npm install`
+    * `npm run build`
 * Test in Firefox
-   * open about:debugging in Firefox
-   * click on ```Load Temporary Addon```.
-   * select any file from the ```dist/sorted``` folder.
-   * click on the new button appearing on the browser toolbar.
+   * open `about:debugging` in Firefox
+   * click on `Load Temporary Addon`.
+   * select the `manifest.json` file from the `dist/` folder.
+   * click on the Sorted icon appearing on the browser toolbar.
 
 ### Other Resources
-* A small video screencast can be found [here](https://youtu.be/7TvW5J2sIN8).
+* A small video screencast (for v2.1) can be found [here](https://youtu.be/7TvW5J2sIN8).
 
 ### Meta
-* Written by [Ramit Mittal](https://ramitmittal.com) - [@ramitmittal](https://github.com/ramitmittal).
 * Distributed under GNU GPLv3. See **LICENSE** for more information.
 * Inspired by [The Sorting Hat](https://www.pottermore.com/explore-the-story/the-sorting-hat).
-* Contributions and suggestions are welcome.
-* This project is under active development.
+* Contributions and suggestions are welcome. Please consider opening an issue or submitting a pull requests.

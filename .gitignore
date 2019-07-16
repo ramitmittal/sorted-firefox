@@ -1,5 +1,5 @@
 *~
-src/popup/*.js
-
 node_modules/
+.idea/
 dist/
+.cache/
