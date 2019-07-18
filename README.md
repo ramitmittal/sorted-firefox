@@ -7,6 +7,7 @@ Install from [addons.mozilla.org](https://addons.mozilla.org/en-GB/firefox/addon
 
 ### Instructions for Development
 * Clone the repository.
+* For Firefox checkout the `master` branch. For Chrome switch to the `chrome` branch.
 * Install and Build
     * `npm install`
     * `npm run build`
@@ -15,6 +16,13 @@ Install from [addons.mozilla.org](https://addons.mozilla.org/en-GB/firefox/addon
    * click on `Load Temporary Addon`.
    * select the `manifest.json` file from the `dist/` folder.
    * click on the Sorted icon appearing on the browser toolbar.
+ * Test in Chrome
+   * open `chrome://extensions` in Chrome.
+   * enable developer mode
+   * click on the `Load Unpacked` button.
+   * select the folder `dist/` folder.
+   * click on the Sorted icon appearing on the browser toolbar.
+
 
 ### Other Resources
 * A small video screencast (for v2.1) can be found [here](https://youtu.be/7TvW5J2sIN8).
