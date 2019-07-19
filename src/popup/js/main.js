@@ -40,7 +40,8 @@ async function flattenAll() {
   await Promise.all(allPromises);
   allPromises = existingSortedFolderIds.map(item => bookmarks.remove(item));
   await Promise.all(allPromises);
-  currentSortedFolders.splice(0, currentSortedFolders.length);
+  // currentSortedFolders.splice(0, currentSortedFolders.length);
+  window.close();
 }
 
 async function go() {
@@ -81,7 +82,8 @@ async function go() {
       }
     }
   });
-  return Promise.all(finalPromises);
+  await Promise.all(finalPromises);
+  window.close();
 }
 
 async function getCurrentSortedFolders() {
@@ -145,35 +147,30 @@ function handleNew() {
 
 function initListeners() {
   mainSortLink.addEventListener('click', () => {
-    mainDialog.setAttribute('hidden', true);
+    mainDialog.setAttribute('hidden', 'true');
     sortDialog.removeAttribute('hidden');
     getCurrentSortedFolders()
       .then(() => populateSortDialog());
   });
   sortBack.addEventListener('click', () => {
     mainDialog.removeAttribute('hidden');
-    sortDialog.setAttribute('hidden', true);
+    sortDialog.setAttribute('hidden', 'true');
   });
   mainUnsortLink.addEventListener('click', () => {
-    mainDialog.setAttribute('hidden', true);
+    mainDialog.setAttribute('hidden', 'true');
     unsortDialog.removeAttribute('hidden');
   });
   unsortAccept.addEventListener('click', () => {
     mainDialog.removeAttribute('hidden');
-    unsortDialog.setAttribute('hidden', true);
+    unsortDialog.setAttribute('hidden', 'true');
     flattenAll();
   });
   unsortReject.addEventListener('click', () => {
     mainDialog.removeAttribute('hidden');
-    unsortDialog.setAttribute('hidden', true);
+    unsortDialog.setAttribute('hidden', 'true');
   });
   sortNew.addEventListener('click', handleNew);
-  sortGo.addEventListener('click', () => {
-    go().then(() => {
-      mainDialog.removeAttribute('hidden');
-      sortDialog.setAttribute('hidden', true);
-    });
-  });
+  sortGo.addEventListener('click', go);
 }
 
 window.onload = () => {
