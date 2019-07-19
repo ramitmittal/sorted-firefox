@@ -15,7 +15,7 @@ const sortInput = document.getElementById('sort-input');
 const unsortDialog = document.getElementById('unsort-dialog');
 const unsortAccept = document.getElementById('unsort-accept');
 const unsortReject = document.getElementById('unsort-reject');
-const currentSortedFolders = []; // contains full bookarkTreeNode objects
+const currentSortedFolders = []; // contains full bookmarkTreeNode objects
 const newSortedFolders = []; // contains only titles of bookmark folders to be created
 
 /**
