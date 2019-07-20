@@ -1,9 +1,12 @@
 # Sorted
-A web extension to sort bookmarks into folders based on keywords entered by the user. 
-Sorted is tested to work with Mozilla Firefox. Compatibility with other browsers is planned.
+A web extension to organize bookmarks into folders based on keywords. 
+Sorted is tested for Mozilla Firefox and Google Chrome. 
 
 ### Usage
+###### Firefox
 Install from [addons.mozilla.org](https://addons.mozilla.org/en-GB/firefox/addon/sort_bookmarks/).
+###### Chrome
+Sorted is not available on Chrome Web Store. See the instructions below to set it up manually.
 
 ### Instructions for Development
 * Clone the repository.
