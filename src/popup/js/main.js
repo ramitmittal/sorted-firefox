@@ -8,7 +8,6 @@ const mainSortLink = document.getElementById('main-sortlink');
 const mainUnsortLink = document.getElementById('main-unsortlink');
 const sortDialog = document.getElementById('sort-dialog');
 const sortList = document.getElementById('sort-list');
-const sortBack = document.getElementById('sort-back');
 const sortNew = document.getElementById('sort-new');
 const sortGo = document.getElementById('sort-go');
 const sortInput = document.getElementById('sort-input');
@@ -151,10 +150,6 @@ function initListeners() {
     sortDialog.removeAttribute('hidden');
     getCurrentSortedFolders()
       .then(() => populateSortDialog());
-  });
-  sortBack.addEventListener('click', () => {
-    mainDialog.removeAttribute('hidden');
-    sortDialog.setAttribute('hidden', 'true');
   });
   mainUnsortLink.addEventListener('click', () => {
     mainDialog.setAttribute('hidden', 'true');
