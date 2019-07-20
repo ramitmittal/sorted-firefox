@@ -30,4 +30,5 @@ Install from [addons.mozilla.org](https://addons.mozilla.org/en-GB/firefox/addon
 ### Meta
 * Distributed under GNU GPLv3. See **LICENSE** for more information.
 * Inspired by [The Sorting Hat](https://www.pottermore.com/explore-the-story/the-sorting-hat).
+* The icon for Sorted is taken from [Material.io](https://material.io/tools/icons/?search=star&icon=stars&style=baseline).
 * Contributions and suggestions are welcome. Please consider opening an issue or submitting a pull request.
