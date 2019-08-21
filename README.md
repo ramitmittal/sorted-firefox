@@ -15,16 +15,16 @@ Sorted is not available on Chrome Web Store. See the instructions below to set i
     * `npm install`
     * `npm run build`
 * Test in Firefox
-   * open `about:debugging` in Firefox
-   * click on `Load Temporary Addon`.
-   * select the `manifest.json` file from the `dist/` folder.
-   * click on the Sorted icon appearing on the browser toolbar.
+    * open `about:debugging` in Firefox
+    * click on `Load Temporary Addon`.
+    * select the `manifest.json` file from the `dist/` folder.
+    * click on the Sorted icon appearing on the browser toolbar.
  * Test in Chrome
-   * open `chrome://extensions` in Chrome.
-   * enable developer mode
-   * click on the `Load Unpacked` button.
-   * select the folder `dist/` folder.
-   * click on the Sorted icon appearing on the browser toolbar.
+    * open `chrome://extensions` in Chrome.
+    * enable developer mode
+    * click on the `Load Unpacked` button.
+    * select the folder `dist/` folder.
+    * click on the Sorted icon appearing on the browser toolbar.
 
 
 ### Other Resources
