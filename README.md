@@ -4,7 +4,7 @@ Sorted is tested for Mozilla Firefox and Google Chrome.
 
 ### Usage
 ###### Firefox
-Install from [addons.mozilla.org](https://addons.mozilla.org/en-GB/firefox/addon/sort_bookmarks/).
+Install from [addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon/sorted/).
 ###### Chrome
 Sorted is not available on Chrome Web Store. See the instructions below to set it up manually.
 

@@ -1,10 +1,10 @@
 {
   "name": "sorted",
-  "version": "2.2.0",
+  "version": "2.3.1",
   "description": "A Mozilla Firefox extension.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ramitmittal/sorted.git"
+    "url": "git+https://ramitm@bitbucket.org/ramitm/sorted.git"
   },
   "author": "Ramit Mittal",
   "license": "GPL-3.0-or-later",
@@ -12,9 +12,9 @@
     "build": "rm -rf dist/ && parcel build src/popup/popup.html --public-url '.' --out-dir dist/popup && cp -r src/manifest.json src/icons dist/"
   },
   "bugs": {
-    "url": "https://github.com/ramitmittal/sorted/issues"
+    "url": "https://bitbucket.org/ramitm/sorted/issues"
   },
-  "homepage": "https://github.com/ramitmittal/sorted#readme",
+  "homepage": "https://bitbucket.org/ramitm/sorted",
   "devDependencies": {
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.5.4",
