@@ -78,7 +78,7 @@ async function go() {
     // eslint-disable-next-line no-restricted-syntax
     for (const x of allBookmarks) {
       const title = x.title.toLowerCase()
-        .split(/[, .]/)
+        .split(/[, .?!:]/)
         .map(y => y.trim());
       // eslint-disable-next-line no-restricted-syntax
       for (const z of title) {
