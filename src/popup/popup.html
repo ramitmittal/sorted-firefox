@@ -6,50 +6,51 @@
 </head>
 
 <body>
-    <div style="width:300px;">
-        <div id="main-dialog" class="dropdown-content">
-            <a class="dropdown-item is-active is-size-5" style="margin-bottom:5px;">
-                Sorted
-            </a>
-            <a id="main-sortlink" class="dropdown-item">
-                Organize bookmarks
-            </a>
-            <a id="main-unsortlink" class="dropdown-item">
-                Flatten bookmarks
-            </a>
-            <hr class="dropdown-divider">
-            <a href="https://bitbucket.org/ramitm/sorted/" class="dropdown-item">
-                Learn more
-            </a>
-        </div>
-        <div id="unsort-dialog" class="dropdown-content" hidden>
-            <div class="dropdown-item">
-                <p>This will delete <strong>all sorted folders</strong> moving the bookmarks back to their original location.</p>
-                <div class="is-flex" style="justify-content:center; margin-top:5px;">
-                    <a id="unsort-accept" class="button light">Accept</a>
-                    <span style="min-width:5px;"></span>
-                    <a id="unsort-reject" class="button is-link">Reject</a>
-                </div>
-            </div>
-        </div>
-        <div id="sort-dialog" class="card" hidden>
-            <div class="dropdown-content">
-                <div class="dropdown-item">
-                    <p>Create <strong>tags</strong> to sort your bookmarks on.</p>
-                </div>
-            </div>
-            <div class="dropdown-content" id="sort-list">
-                <a href="#" class="dropdown-item">
-                    <span class="delete is-small" style="margin-right:10px; top:3px;"></span>
-                    <input id="sort-input" class="input is-small" type="text" placeholder="tech, programming, software">
-                </a>
-                <div href="#" class="is-flex" style="margin-top:3px; justify-content: space-between;">
-                    <a id="sort-new" class="button is-small is-light" style="margin-left:15px !important;">Add</a>
-                    <a id="sort-go" class="button is-small is-link" style="margin-right:15px;">Sort</a>
-                </div>
+<div style="width:300px;">
+    <div class="dropdown-content" id="main-dialog">
+        <a class="dropdown-item is-active is-size-5" style="margin-bottom:5px;">
+            Sorted
+        </a>
+        <a class="dropdown-item" id="main-sortlink">
+            Organize bookmarks
+        </a>
+        <a class="dropdown-item" id="main-unsortlink">
+            Flatten bookmarks
+        </a>
+        <hr class="dropdown-divider">
+        <a class="dropdown-item" href="https://bitbucket.org/ramitm/sorted/">
+            Learn more
+        </a>
+    </div>
+    <div class="dropdown-content" hidden id="unsort-dialog">
+        <div class="dropdown-item">
+            <p>This will delete <strong>all sorted folders</strong> moving the bookmarks back to their original
+                location.</p>
+            <div class="is-flex" style="justify-content:center; margin-top:5px;">
+                <a class="button light" id="unsort-accept">Accept</a>
+                <span style="min-width:5px;"></span>
+                <a class="button is-link" id="unsort-reject">Reject</a>
             </div>
         </div>
     </div>
+    <div class="card" hidden id="sort-dialog">
+        <div class="dropdown-content">
+            <div class="dropdown-item">
+                <p>Create <strong>tags</strong> to sort your bookmarks on.</p>
+            </div>
+        </div>
+        <div class="dropdown-content" id="sort-list">
+            <a class="dropdown-item" href="#">
+                <span class="delete is-small" style="margin-right:10px; top:3px;"></span>
+                <input class="input is-small" id="sort-input" placeholder="tech, programming, software" type="text">
+            </a>
+            <div class="is-flex" href="#" style="margin-top:3px; justify-content: space-between;">
+                <a class="button is-small is-light" id="sort-new" style="margin-left:15px !important;">Add</a>
+                <a class="button is-small is-link" id="sort-go" style="margin-right:15px;">Sort</a>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="js/main.js"></script>
 </body>
 

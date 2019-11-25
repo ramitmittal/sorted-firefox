@@ -71,10 +71,15 @@ async function go() {
   });
   const finalPromises = [];
   sortHeaders.forEach((header) => {
-    const tags = header.title.toLowerCase().slice(0, header.title.indexOf('(sorted)')).split(',').map(s => s.trim());
+    const tags = header.title.toLowerCase()
+      .slice(0, header.title.indexOf('(sorted)'))
+      .split(',')
+      .map(s => s.trim());
     // eslint-disable-next-line no-restricted-syntax
     for (const x of allBookmarks) {
-      const title = x.title.toLowerCase().split(/[, .]/).map(y => y.trim());
+      const title = x.title.toLowerCase()
+        .split(/[, .]/)
+        .map(y => y.trim());
       // eslint-disable-next-line no-restricted-syntax
       for (const z of title) {
         if (tags.includes(z)) finalPromises.push(bookmarks.move(x.id, { parentId: header.id }));
@@ -136,7 +141,10 @@ function addNewSortItem(item) {
  */
 function handleNew() {
   if (sortInput.value.trim() !== '') {
-    const tagArray = sortInput.value.trim().split(',').map(item => item.toLowerCase().trim());
+    const tagArray = sortInput.value.trim()
+      .split(',')
+      .map(item => item.toLowerCase()
+        .trim());
     const tagString = tagArray.join(', ');
     newSortedFolders.push(tagString);
     addNewSortItem(tagString);
