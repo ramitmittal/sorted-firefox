@@ -11,7 +11,7 @@
   "scripts": {
     "build": "rm -rf dist/ && parcel build src/popup/popup.html --public-url '.' --out-dir dist/popup && cp -r src/manifest.json src/icons dist/",
     "start": "web-ext run -s dist/",
-    "pack": "web-ext build -s dist/ -a artifacts/"
+    "pack": "node scripts/validate && web-ext build -s dist/ -a artifacts/"
   },
   "bugs": {
     "url": "https://bitbucket.org/ramitm/sorted/issues"
