@@ -12,7 +12,8 @@
     "build": "rm -rf dist/ && parcel build src/popup/popup.html --public-url '.' --out-dir dist/popup && cp -r src/manifest.json src/icons dist/",
     "prestart": "npm run build",
     "start": "web-ext run -s dist/",
-    "pack": "node scripts/validate && web-ext build -s dist/ -a artifacts/"
+    "postpack": "rm -rf sorted-*.tgz && npm run zip:target",
+    "zip:target": "node scripts/validate && web-ext build -s dist/ -a artifacts/"
   },
   "bugs": {
     "url": "https://bitbucket.org/ramitm/sorted/issues"
