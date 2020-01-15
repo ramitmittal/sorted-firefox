@@ -33,5 +33,5 @@ Sorted is not available on Chrome Web Store. See the instructions below to set i
 ### Meta
 * Distributed under GNU GPLv3. See **LICENSE** for more information.
 * Inspired by [The Sorting Hat](https://www.pottermore.com/explore-the-story/the-sorting-hat).
-* The icon for Sorted is taken from [Material.io](https://material.io/tools/icons/?search=star&icon=stars&style=baseline).
+* The icon for Sorted is provided by [icons8](https://icons8.com).
 * Contributions and suggestions are welcome. Please consider opening an issue or submitting a pull request.

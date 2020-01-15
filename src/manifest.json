@@ -6,8 +6,7 @@
   "description": "Makes managing bookmarks easier by sorting them into folders based on keywords provided by the user.",
   "homepage_url": "https://bitbucket.org/ramitm/sorted",
   "icons": {
-    "48": "icons/icon-48.png",
-    "32": "icons/icon-32.png"
+    "64": "icons/icon-64.png"
   },
 
   "permissions": [
@@ -16,7 +15,7 @@
 
   "browser_action": {
     "browser_style": true,
-    "default_icon": "icons/icon-48.png",
+    "default_icon": "icons/icon-64.png",
     "default_title": "Sorted",
     "default_popup": "popup/popup.html"
   }
