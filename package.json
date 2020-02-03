@@ -4,7 +4,7 @@
   "description": "A Mozilla Firefox extension.",
   "repository": {
     "type": "git",
-    "url": "git+https://ramitm@bitbucket.org/ramitm/sorted.git"
+    "url": "git+https://gitlab.com/ramitmittal/sorted.git"
   },
   "author": "Ramit Mittal",
   "license": "GPL-3.0-or-later",
@@ -16,9 +16,9 @@
     "zip:target": "node scripts/validate && web-ext build -s dist/ -a artifacts/"
   },
   "bugs": {
-    "url": "https://bitbucket.org/ramitm/sorted/issues"
+    "url": "https://gitlab.com/ramitmittal/sorted/issues"
   },
-  "homepage": "https://bitbucket.org/ramitm/sorted",
+  "homepage": "https://gitlab.com/ramitmittal/sorted",
   "devDependencies": {
     "@babel/cli": "^7.7.4",
     "@babel/core": "^7.7.4",
