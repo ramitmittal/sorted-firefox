@@ -45,9 +45,7 @@ function createNewSortListElement(itemText) {
   const tempA = document.createElement('a');
   tempA.classList.add('dropdown-item');
   const tempSpan = document.createElement('span');
-  tempSpan.classList.add('delete', 'is-small');
-  tempSpan.style.marginRight = '10px';
-  tempSpan.style.top = '3px';
+  tempSpan.classList.add('delete', 'is-small', 'custom');
   tempSpan.addEventListener('click', sortListDelete);
   const tempText = document.createTextNode(itemText);
   tempA.appendChild(tempSpan);
