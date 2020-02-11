@@ -1,6 +1,6 @@
 {
   "name": "sorted",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "description": "A Mozilla Firefox extension.",
   "repository": {
     "type": "git",
