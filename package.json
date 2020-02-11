@@ -9,7 +9,7 @@
   "author": "Ramit Mittal",
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "build": "rm -rf dist/ && parcel build src/popup/popup.html --public-url '.' --out-dir dist/popup && cp -r src/manifest.json src/icons dist/",
+    "build": "rm -rf dist/ && parcel build src/popup/popup.html --public-url '.' --out-dir dist/popup --no-source-maps && cp -r src/manifest.json src/icons dist/",
     "prestart": "npm run build",
     "start": "web-ext run -s dist/",
     "postpack": "rm -rf sorted-*.tgz && npm run zip:target",
