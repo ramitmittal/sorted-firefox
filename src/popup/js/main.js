@@ -42,15 +42,15 @@ function sortListDelete(event) {
  * @param {String} itemText - text of element
  */
 function createNewSortListElement(itemText) {
-  const tempA = document.createElement('a');
-  tempA.classList.add('dropdown-item');
   const tempSpan = document.createElement('span');
-  tempSpan.classList.add('delete', 'is-small', 'custom');
-  tempSpan.addEventListener('click', sortListDelete);
+  tempSpan.classList.add('tag', 'is-dark', 'is-small');
+  const tempButton = document.createElement('button');
+  tempButton.classList.add('delete', 'is-small');
+  tempButton.addEventListener('click', sortListDelete);
   const tempText = document.createTextNode(itemText);
-  tempA.appendChild(tempSpan);
-  tempA.appendChild(tempText);
-  sortList.appendChild(tempA);
+  tempSpan.appendChild(tempText);
+  tempSpan.appendChild(tempButton);
+  sortList.appendChild(tempSpan);
 }
 
 // Event listener for adding element to sorted folder list.
