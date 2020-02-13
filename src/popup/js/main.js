@@ -50,7 +50,7 @@ function createNewSortListElement(itemText) {
   const tempText = document.createTextNode(itemText);
   tempA.appendChild(tempSpan);
   tempA.appendChild(tempText);
-  sortList.insertBefore(tempA, sortInput.parentElement);
+  sortList.appendChild(tempA);
 }
 
 // Event listener for adding element to sorted folder list.

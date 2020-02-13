@@ -6,11 +6,11 @@
 </head>
 
 <body>
-<div style="width:300px;">
+<div style="width:300px">
     <div class="dropdown-content" id="main-dialog">
-        <a class="dropdown-item is-active is-size-5" style="margin-bottom:5px;">
+        <h4 class="dropdown-item is-size-5 margin-bottom-5">
             Sorted
-        </a>
+        </h4>
         <a class="dropdown-item" id="main-sortlink">
             Organize bookmarks
         </a>
@@ -22,33 +22,23 @@
             Learn more
         </a>
     </div>
-    <div class="dropdown-content" hidden id="unsort-dialog">
-        <div class="dropdown-item">
-            <p>This will delete <strong>all sorted folders</strong> moving the bookmarks back to their original
-                location.</p>
-            <div class="is-flex" style="justify-content:center; margin-top:5px;">
-                <a class="button light" id="unsort-accept">Accept</a>
-                <span style="min-width:5px;"></span>
-                <a class="button is-link" id="unsort-reject">Reject</a>
-            </div>
-        </div>
+    <div class="content padding-10" hidden id="unsort-dialog">
+          <p class="has-text-grey-dark margin-top-15 has-text-centered">This will delete <strong>all sorted folders</strong>, moving the bookmarks back to their original
+              location.</p>
+          <div class="is-flex" style="justify-content:center;">
+              <button class="button is-light" id="unsort-accept">Accept</button>
+              <span style="min-width:10px;"></span>
+              <button class="button is-dark" id="unsort-reject">Reject</button>
+          </div>
     </div>
-    <div class="card" hidden id="sort-dialog">
-        <div class="dropdown-content">
-            <div class="dropdown-item">
-                <p>Create <strong>tags</strong> to sort your bookmarks on.</p>
-            </div>
-        </div>
-        <div class="dropdown-content" id="sort-list">
-            <a class="dropdown-item" href="#">
-                <span class="delete is-small custom-input"></span>
-                <input class="input is-small" id="sort-input" placeholder="tech, programming, software" type="text">
-            </a>
-            <div class="is-flex" href="#" style="margin-top:3px; justify-content: space-between;">
-                <a class="button is-small is-light" id="sort-new" style="margin-left:15px !important;">Add</a>
-                <a class="button is-small is-link" id="sort-go" style="margin-right:15px;">Sort</a>
-            </div>
-        </div>
+    <div class="content" hidden id="sort-dialog">
+          <p class="has-text-grey-dark margin-top-15 has-text-centered padding-horizontal-10">Create <strong>tags</strong> to sort your bookmarks.</p>
+          <div id="sort-list"></div>
+          <input class="input is-small margin-horizontal-10" id="sort-input" placeholder="tech, programming, software" type="text">
+          <div class="is-flex padding-10" style="justify-content: space-between;">
+              <button class="button is-small is-light" id="sort-new" style="margin-left:15px !important;">Add</button>
+              <button class="button is-small is-dark" id="sort-go" style="margin-right:15px;">Sort</button>
+          </div>
     </div>
 </div>
 <script src="js/main.js"></script>
