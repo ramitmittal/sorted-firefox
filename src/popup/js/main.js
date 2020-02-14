@@ -115,6 +115,9 @@ function initListeners() {
       window.close();
     },
   );
+  sortInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') addNewSortedFolder();
+  });
 }
 
 window.onload = initListeners;
