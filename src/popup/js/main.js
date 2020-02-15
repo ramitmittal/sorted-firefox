@@ -88,6 +88,7 @@ function initListeners() {
       survivingSortedFolders.map(item => createNewSortListElement(item.title));
       showSortDialog();
       hideMainDialog();
+      sortInput.focus();
     },
   );
   mainUnsortLink.addEventListener(
