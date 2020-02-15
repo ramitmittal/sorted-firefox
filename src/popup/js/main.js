@@ -74,9 +74,15 @@ function addNewSortedFolder() {
 // Helpers for managing basic UI changes
 const hideElement = element => element.setAttribute('hidden', true);
 const showElement = element => element.removeAttribute('hidden');
-const hideMainDialog = () => { hideElement(mainDialog); };
-const showUnsortDialog = () => { showElement(unsortDialog); };
-const showSortDialog = () => { showElement(sortDialog); };
+const hideMainDialog = () => {
+  hideElement(mainDialog);
+};
+const showUnsortDialog = () => {
+  showElement(unsortDialog);
+};
+const showSortDialog = () => {
+  showElement(sortDialog);
+};
 
 // Initialize all event listeners for the popup
 function initListeners() {
