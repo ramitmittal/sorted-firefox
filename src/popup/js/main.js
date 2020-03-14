@@ -8,6 +8,8 @@ import {
   sortAll,
 } from './bookmarkUtil';
 
+import * as config from '../../config.json';
+
 const mainDialog = document.getElementById('main-dialog');
 const mainSortLink = document.getElementById('main-sortlink');
 const mainUnsortLink = document.getElementById('main-unsortlink');
@@ -18,6 +20,7 @@ const sortInput = document.getElementById('sort-input');
 const unsortDialog = document.getElementById('unsort-dialog');
 const unsortAccept = document.getElementById('unsort-accept');
 const unsortReject = document.getElementById('unsort-reject');
+const learnMore = document.getElementById('learn-more');
 
 /**
  * Event listener when user deletes element from the sorted folders list in UI.
@@ -114,6 +117,11 @@ function initListeners() {
   );
   sortInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') addNewSortedFolder();
+  });
+  learnMore.addEventListener('click', async (event) => {
+    // eslint-disable-next-line no-undef
+    browser.tabs.create({ url: config.changelogUrl });
+    event.preventDefault();
   });
 }
 
