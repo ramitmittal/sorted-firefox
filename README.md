@@ -10,7 +10,7 @@ Sorted is not available on Chrome Web Store. See the instructions below to set i
 
 ### Instructions for Development
 * Clone the repository.
-* For Firefox checkout the `master` branch. For Chrome switch to the `chrome` branch.
+* Make sure you checkout the `master` branch.
 * Install and Build
     * `npm install`
     * `npm run build`

@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<div style="width:300px">
+<div style="width:340px">
   <div class="dropdown-content" id="main-dialog">
     <h4 class="dropdown-item is-size-5 margin-bottom-5">
       Sorted
@@ -22,26 +22,24 @@
       Learn more
     </a>
   </div>
-  <div class="content padding-10" hidden id="unsort-dialog">
-    <p class="has-text-grey-dark margin-top-15 has-text-centered">This will delete <strong>all sorted folders</strong>,
+  <div class="content padding-15" hidden id="unsort-dialog">
+    <p class="has-text-grey-dark margin-top-15">This will delete <strong>all sorted folders</strong>,
       moving the bookmarks back to their original
       location.</p>
-    <div class="is-flex" style="justify-content:center;">
-      <button class="button is-light" id="unsort-accept">Accept</button>
-      <span style="min-width:10px;"></span>
-      <button class="button is-dark" id="unsort-reject">Reject</button>
+    <div>
+      <button class="button is-small is-light" id="unsort-accept" style="margin-right:10px;">Accept</button>
+      <button class="button is-small is-dark" id="unsort-reject">Reject</button>
     </div>
   </div>
-  <div class="content" hidden id="sort-dialog">
-    <p class="has-text-grey-dark margin-top-15 has-text-centered padding-horizontal-10">Create <strong>tags</strong> to
+  <div class="content padding-15" hidden id="sort-dialog">
+    <p class="has-text-grey-dark margin-top-15">Create <strong>tags</strong> to
       sort your bookmarks.</p>
     <div id="sort-list" class="tags margin-bottom-5 padding-horizontal-10 margin-horizontal-10"></div>
-    <div class="padding-horizontal-10">
+      <p class="input-helper">Type comma separated keywords and press Enter</p>
       <input class="input is-small" id="sort-input" placeholder="tech, programming, software"
              type="text">
-    </div>
-    <div class="has-text-right padding-10">
-      <button class="button is-dark" id="sort-go" style="margin-right:15px;">Sort</button>
+    <div class="has-text-right margin-top-10 padding-horizontal-10">
+      <button class="button is-small is-dark" id="sort-go">Sort</button>
     </div>
   </div>
 </div>
