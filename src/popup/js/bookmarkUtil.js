@@ -1,41 +1,62 @@
-// eslint-disable-next-line no-undef
 import * as fp from 'lodash/fp';
+import { Subject } from 'rxjs';
 
 // eslint-disable-next-line no-undef
 const { bookmarks } = browser;
 
-/**
- * Contains only titles of bookmark folders to be created
- * @type {string[]}
- */
-const newSortedFolders = [];
+let otherBookmarksId; // the Id of the "Other Bookmarks" folder
 
 /**
- * Contains only title of bookmark folders marked for deletion
- * @type {string[]}
+ * Bookmark objects of Sorted folders already existing in the browser bookmarks
+ * @type {BookmarkTreeNode[]}
  */
-const deletedSortedFolders = [];
+let existingSortedBookmarkFolders = [];
 
 /**
- * Empty the existing sorted folders, moving all child bookmarks out.
- * Then delete the existing sorted folders.
+ * Bookmark objects of Sorted folders that user created in this session
+ * Do not exist in the browser bookmarks yet
+ * @type {BookmarkTreeNode[]}
+ */
+let newSortedFolders = [];
+
+/**
+ * rxjs subject
+ * @see publishToSubscriber
+ */
+const sortedBookmarkFoldersSubject = new Subject();
+
+/** Publish sorted folder changes for UI re-render */
+function publishToSubscriber() {
+  /**
+   * map the bookmark folders (existing and newly added) to their titles
+   * which are used to render UI
+   */
+  const dataForUI = [...existingSortedBookmarkFolders, ...newSortedFolders]
+    .map(item => item.title.split(' (sorted)')[0]);
+
+  // publish the changes
+  sortedBookmarkFoldersSubject.next(dataForUI);
+}
+
+/**
+ * Empty an existing sorted bookmarks folder, moving all child bookmarks to "Other Bookmarks".
+ * Then delete the folder itself.
  * @returns {Promise<void>}
  */
-async function flattenAll() {
-  const allBookmarks = await bookmarks.search({});
-  const otherBookmarksId = allBookmarks[3].id;
-  const existingSortedFolderIds = allBookmarks
-    .filter(item => item.title.endsWith('(sorted)') && item.type === 'folder')
-    .map(item => item.id);
-
-  const bookmarkMovePromises = allBookmarks
-    .filter(item => existingSortedFolderIds.includes(item.parentId))
-    .map(item => bookmarks.move(item.id, { parentId: otherBookmarksId }));
+async function flattenOneBookmarkFolder(parentBookmark) {
+  const children = await bookmarks.getChildren(parentBookmark.id);
+  const bookmarkMovePromises = children
+    .map(childBookmark => bookmarks.move(childBookmark.id, { parentId: otherBookmarksId }));
   await Promise.all(bookmarkMovePromises);
+  return bookmarks.removeTree(parentBookmark.id);
+}
 
-  const deletedSortedFoldersPromises = existingSortedFolderIds
-    .map(item => bookmarks.remove(item));
-  await Promise.all(deletedSortedFoldersPromises);
+/**
+ * Flatten all existing sorted bookmark folders.
+ * @see flattenOneBookmarkFolder
+ */
+async function flattenAll() {
+  return existingSortedBookmarkFolders.map(flattenOneBookmarkFolder);
 }
 
 /**
@@ -46,57 +67,56 @@ async function sortAll() {
   // 1.1 create new sorted folders
   const bookmarkFolderCreationPromises = newSortedFolders
     .map(item => bookmarks.create({
-      title: `${item} (sorted)`,
+      title: item.title,
       type: 'folder',
     }));
-  await Promise.all(bookmarkFolderCreationPromises);
+  const createdSortedFolders = await Promise.all(bookmarkFolderCreationPromises);
 
-  // 1.2 fetch all sorted folders
-  const currentSortedFolders = (await bookmarks.search({ query: '(sorted)' }))
-    .filter(item => item.title.endsWith('(sorted)') && item.type === 'folder')
-    .filter((item) => {
-      const { title } = item;
-      const titleWithoutSorted = title.substr(0, title.indexOf(' (sorted)'));
-      if (deletedSortedFolders.includes(title)
-        || deletedSortedFolders.includes(titleWithoutSorted)) {
-        return false;
-      }
-      return true;
-    });
+  // 1.2 add created folders to existingSortedFolders
+  const newSortedFoldersWithIds = fp.zip(newSortedFolders, createdSortedFolders)
+    // this zip operation helps us retain the "sortedKeywords" property that we previously computed
+    .map(zippedArr => ({
+      ...zippedArr[1],
+      sortedKeywords: zippedArr[0].sortedKeywords,
+    }));
 
-  // 1.3 get ids of default bookmarks folders
+  newSortedFolders = [];
+  existingSortedBookmarkFolders = [...existingSortedBookmarkFolders, ...newSortedFoldersWithIds];
+
+  /**
+   * 1.3
+   * Fetch all bookmarks and find bookmarks that are to be checked.
+   * Only bookmarks that are un-organized are to be moved.
+   * Direct children of default folders like "Bookmarks Menu" etc. will be checked.
+   * Any bookmark in a user-created folder will be not moved.
+   */
   const allBookmarks = await bookmarks.search({});
+
+  // Get ids of default bookmarks folders like "Bookmarks Menu" etc.
   const defaultFolderParentIds = fp.compose(
     fp.map(item => item.id),
     fp.take(5),
   )(allBookmarks);
-
-  // 1.4 user created bookmark folders are not to be touched
   const candidatesForSorting = fp.compose(
     fp.filter(item => item.type !== 'folder' && defaultFolderParentIds.includes(item.parentId)),
     fp.drop(5),
   )(allBookmarks);
 
-  // 1.5 get sortedFolderTags to aid in sorting
-  const sortedFolderTags = currentSortedFolders.map((item) => {
-    const tags = item.title.toLowerCase()
-      .slice(0, item.title.indexOf('(sorted)'))
-      .split(',')
-      .map(s => s.trim());
-    return [tags, item.id];
-  });
-
+  // 1.4 compare and move
   const bookmarksMovePromises = candidatesForSorting.map((item) => {
-    const titleTokens = item.title
+    // Split the title of a bookmark into array of individual words
+    const titleWords = item.title
       .toLowerCase()
       .split(/[, .?!:]/)
       .map(s => s.trim());
 
     // eslint-disable-next-line no-restricted-syntax
-    for (const token of titleTokens) {
+    for (const word of titleWords) {
       // eslint-disable-next-line no-restricted-syntax
-      for (const sortTag of sortedFolderTags) {
-        if (sortTag[0].includes(token)) return bookmarks.move(item.id, { parentId: sortTag[1] });
+      for (const esbf of existingSortedBookmarkFolders) {
+        if (esbf.sortedKeywords.includes(word)) {
+          return bookmarks.move(item.id, { parentId: esbf.id });
+        }
       }
     }
     return null;
@@ -105,33 +125,85 @@ async function sortAll() {
 }
 
 /**
- * Wrapper for the bookmarks search query.
- * @returns {Promise<Array<Object>>>}
- */
-function fetchExistingFolders() {
-  return bookmarks.search({ query: '(sorted)' });
-}
-
-/**
  * Update internal application state when the user deletes a folder from the popup UI.
- * @param {String} itemTitle - this will either be a string that ends with ' (sorted)' or not.
+ * @param {String} itemTitle.
  */
 function handleFolderDelete(itemTitle) {
-  if (newSortedFolders.includes(itemTitle)) {
-    newSortedFolders.splice(newSortedFolders.indexOf(itemTitle), 1);
-  } else {
-    deletedSortedFolders.push(itemTitle);
+  const deletedFolderTitle = `${itemTitle} (sorted)`;
+
+  /**
+   * A folder being deleted will be in "newSortedFolders"
+   *    if user added the keyword in the same session
+   * In this case, just remove the folder from program state
+   */
+  const indexInNewSortedFolders = fp.findIndex(fp.matchesProperty('title', deletedFolderTitle), newSortedFolders);
+
+  if (indexInNewSortedFolders !== -1) {
+    newSortedFolders.splice(newSortedFolders.indexOf(deletedFolderTitle), 1);
+    return;
   }
+
+  /**
+   * A folder being deleted will be in "existingSortedBookmarksFolders"
+   *    if it was created in some previous session
+   * In this case, remove the folder from program state and also delete the actual bookmarks folder
+   *    from the browser
+   */
+  const indexInExistingFolders = fp.findIndex(fp.matchesProperty('title', deletedFolderTitle), existingSortedBookmarkFolders);
+  if (indexInExistingFolders !== -1) {
+    const deletedFolder = existingSortedBookmarkFolders
+      .splice(existingSortedBookmarkFolders.indexOf(deletedFolderTitle), 1);
+    flattenOneBookmarkFolder(deletedFolder[0]);
+  }
+
+  // publish changes for UI re-render
+  publishToSubscriber();
 }
 
 /**
  * Update internal application state when the user adds a folder in the popup UI.
- * @param {String} itemTitle
+ * @param {String} rawInput
  */
-function handleFolderAdd(itemTitle) {
-  newSortedFolders.push(itemTitle);
+function handleFolderAdd(rawInput) {
+  // split the input into keywords and trim spaces
+  const keywordArray = rawInput
+    .split(',')
+    .map(item => item
+      .toLowerCase()
+      .trim());
+
+  // ensure that keywords are unique
+  const uniqueKeywordArray = fp.uniq(keywordArray);
+
+  // validate that same keyword does not appear in some pre-existing folder
+  const allTheFolders = [...existingSortedBookmarkFolders, ...newSortedFolders];
+  const allTheTags = fp.flatMap('sortedKeywords', allTheFolders);
+
+  const validTagsFromInput = uniqueKeywordArray.filter(item => !allTheTags.includes(item));
+  if (validTagsFromInput.length === 0) return;
+
+
+  // add folder to program state, this folder will be created in browser bookmarks later
+  const newSortedFolder = { title: `${validTagsFromInput.join(', ')} (sorted)`, sortedKeywords: validTagsFromInput };
+  newSortedFolders.push(newSortedFolder);
+
+  // publish changes for UI re-render
+  publishToSubscriber();
 }
 
+/** Fetch bookmark data from browser and save in program state to reduce repetitive queries */
+(async function initState() {
+  const allBookmarks = await bookmarks.search({});
+
+  otherBookmarksId = allBookmarks[3].id;
+
+  existingSortedBookmarkFolders = allBookmarks
+    .filter(item => item.title.endsWith('(sorted)') && item.type === 'folder')
+    .map(item => ({ ...item, sortedKeywords: item.title.split(' (sorted)')[0].split(', ') }));
+
+  publishToSubscriber();
+}());
+
 export {
-  flattenAll, sortAll, fetchExistingFolders, handleFolderDelete, handleFolderAdd,
+  flattenAll, sortAll, sortedBookmarkFoldersSubject, handleFolderDelete, handleFolderAdd,
 };

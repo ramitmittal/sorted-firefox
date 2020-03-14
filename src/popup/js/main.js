@@ -1,8 +1,7 @@
 import '../custom.sass';
 
-import { Subject } from 'rxjs';
 import {
-  fetchExistingFolders,
+  sortedBookmarkFoldersSubject,
   flattenAll,
   handleFolderAdd,
   handleFolderDelete,
@@ -20,24 +19,23 @@ const unsortDialog = document.getElementById('unsort-dialog');
 const unsortAccept = document.getElementById('unsort-accept');
 const unsortReject = document.getElementById('unsort-reject');
 
-/** dispatch changes in sorted folders list to bookmarks util for syncing internal state */
-const folderDeleteSubject = new Subject();
-folderDeleteSubject.subscribe(handleFolderDelete);
-
-const folderAddSubject = new Subject();
-folderAddSubject.subscribe(handleFolderAdd);
-
 /**
- * Event listener for removing element from the sorted folder list.
+ * Event listener when user deletes element from the sorted folders list in UI.
  * @param event
  */
 function sortListDelete(event) {
-  sortList.removeChild(event.target.parentNode);
-  folderDeleteSubject.next(event.target.parentNode.innerText);
+  handleFolderDelete(event.target.parentNode.innerText);
+}
+
+// Empty the sorted folders list in UI.
+function emptySortList() {
+  while (sortList.firstChild) {
+    sortList.removeChild(sortList.lastChild);
+  }
 }
 
 /**
- * Create new element in sorted folders list.
+ * Create new element in sorted folders list in UI.
  * @param {String} itemText - text of element
  */
 function createNewSortListElement(itemText) {
@@ -52,22 +50,19 @@ function createNewSortListElement(itemText) {
   sortList.appendChild(tempSpan);
 }
 
-// Event listener for adding element to sorted folder list.
+// Subscribe to changes in sorted bookmark folders list and re-create list in UI
+sortedBookmarkFoldersSubject.subscribe((sbfArray) => {
+  emptySortList();
+  sbfArray.forEach(createNewSortListElement);
+});
+
+// Event listener when user adds element to sorted folders in UI.
 function addNewSortedFolder() {
   const { value } = sortInput;
   sortInput.value = '';
   if (value.trim() === '') return;
 
-  const tagString = value
-    .trim()
-    .split(',')
-    .map(item => item
-      .toLowerCase()
-      .trim())
-    .join(', ');
-
-  createNewSortListElement(tagString);
-  folderAddSubject.next(tagString);
+  handleFolderAdd(value);
 }
 
 // Helpers for managing basic UI changes
@@ -88,9 +83,6 @@ function initListeners() {
   mainSortLink.addEventListener(
     'click',
     async () => {
-      // populate the list on sort dialog and show
-      const survivingSortedFolders = await fetchExistingFolders();
-      survivingSortedFolders.map(item => createNewSortListElement(item.title));
       showSortDialog();
       hideMainDialog();
       sortInput.focus();
