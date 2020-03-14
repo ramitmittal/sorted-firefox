@@ -4,9 +4,16 @@ import * as fp from 'lodash/fp';
 // eslint-disable-next-line no-undef
 const { bookmarks } = browser;
 
-// Array<String> contains only titles of bookmark folders to be created
+/**
+ * Contains only titles of bookmark folders to be created
+ * @type {string[]}
+ */
 const newSortedFolders = [];
-// Array<String> contains only title of bookmark folders marked for deletion
+
+/**
+ * Contains only title of bookmark folders marked for deletion
+ * @type {string[]}
+ */
 const deletedSortedFolders = [];
 
 /**
