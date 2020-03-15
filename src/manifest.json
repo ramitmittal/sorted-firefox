@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Sorted",
-  "version": "2.7.0",
+  "version": "2.7.1",
 
   "description": "Makes managing bookmarks easier by sorting them into folders based on keywords provided by the user.",
   "homepage_url": "https://gitlab.com/ramitmittal/sorted",
