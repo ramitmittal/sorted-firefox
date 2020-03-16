@@ -1,5 +1,5 @@
 import {
-  sortedBookmarkFoldersSubject,
+  sortedBookmarkFoldersEmitter,
   flattenAll,
   handleFolderAdd,
   handleFolderDelete,
@@ -51,8 +51,8 @@ function createNewSortListElement(itemText) {
   sortList.appendChild(tempSpan);
 }
 
-// Subscribe to changes in sorted bookmark folders list and re-create list in UI
-sortedBookmarkFoldersSubject.subscribe((sbfArray) => {
+// Listen to changes in sorted bookmark folders list and re-create list in UI
+sortedBookmarkFoldersEmitter.on('update', (sbfArray) => {
   emptySortList();
   sbfArray.forEach(createNewSortListElement);
 });

@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import * as fp from 'lodash/fp';
-import { Subject } from 'rxjs';
+
+const EventEmitter = require('events');
 
 // eslint-disable-next-line no-undef
 const { bookmarks } = browser;
@@ -21,10 +22,11 @@ let existingSortedBookmarkFolders = [];
 let newSortedFolders = [];
 
 /**
- * rxjs subject
+ * For emitting events on deletion/addition of sorted folders
+ * (was previous a) rxjs subject
  * @see publishToSubscriber
  */
-const sortedBookmarkFoldersSubject = new Subject();
+const sortedBookmarkFoldersEmitter = new EventEmitter();
 
 /** Publish sorted folder changes for UI re-render */
 function publishToSubscriber() {
@@ -36,7 +38,7 @@ function publishToSubscriber() {
     .map(item => item.title.split(' (sorted)')[0]);
 
   // publish the changes
-  sortedBookmarkFoldersSubject.next(dataForUI);
+  sortedBookmarkFoldersEmitter.emit('update', dataForUI);
 }
 
 /**
@@ -206,5 +208,5 @@ function handleFolderAdd(rawInput) {
 }());
 
 export {
-  flattenAll, sortAll, sortedBookmarkFoldersSubject, handleFolderDelete, handleFolderAdd,
+  flattenAll, sortAll, sortedBookmarkFoldersEmitter, handleFolderDelete, handleFolderAdd,
 };
