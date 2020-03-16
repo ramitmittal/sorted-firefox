@@ -1,5 +1,3 @@
-import '../custom.sass';
-
 import {
   sortedBookmarkFoldersSubject,
   flattenAll,
