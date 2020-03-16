@@ -5,6 +5,14 @@ Sorted has zero configuration and zero background processing. It will only work 
 
 **Help is always one [email](mailto:commitemailoframit@protonmail.com)  away.**
 
+## [2.7.2] - 16 March 2020
+### Fixes
+- Deletion of wrong folder due to wrong array indexing when user removes folder from UI.
+
+## [2.7.1] - 15 March 2020
+### What's new
+- Added CHANGELOG.md
+
 ## [2.7.0] - 14 March 2020
 ### What's new
 - The `add` button has been removed. While adding a new item, users can now press the `Enter` key for the same effect.
