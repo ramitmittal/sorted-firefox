@@ -140,7 +140,7 @@ function handleFolderDelete(itemTitle) {
   const indexInNewSortedFolders = fp.findIndex(fp.matchesProperty('title', deletedFolderTitle), newSortedFolders);
 
   if (indexInNewSortedFolders !== -1) {
-    newSortedFolders.splice(newSortedFolders.indexOf(deletedFolderTitle), 1);
+    newSortedFolders.splice(indexInNewSortedFolders, 1);
     return;
   }
 
@@ -153,7 +153,7 @@ function handleFolderDelete(itemTitle) {
   const indexInExistingFolders = fp.findIndex(fp.matchesProperty('title', deletedFolderTitle), existingSortedBookmarkFolders);
   if (indexInExistingFolders !== -1) {
     const deletedFolder = existingSortedBookmarkFolders
-      .splice(existingSortedBookmarkFolders.indexOf(deletedFolderTitle), 1);
+      .splice(indexInExistingFolders, 1);
     flattenOneBookmarkFolder(deletedFolder[0]);
   }
 
