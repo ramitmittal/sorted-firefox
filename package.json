@@ -1,13 +1,14 @@
 {
   "name": "sorted",
   "version": "2.7.2",
-  "description": "A Mozilla Firefox extension.",
+  "description": "A web-extension for organizing bookmarks.",
   "repository": {
     "type": "git",
     "url": "git+https://gitlab.com/ramitmittal/sorted.git"
   },
   "author": "Ramit Mittal",
   "license": "GPL-3.0-or-later",
+  "private": true,
   "scripts": {
     "build": "bash scripts/build.sh",
     "prestart": "npm run build",

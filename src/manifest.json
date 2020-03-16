@@ -3,7 +3,7 @@
   "name": "Sorted",
   "version": "2.7.2",
 
-  "description": "Makes managing bookmarks easier by sorting them into folders based on keywords provided by the user.",
+  "description": "Makes managing bookmarks easier by organizing them into folders based on keywords provided by the user.",
   "homepage_url": "https://gitlab.com/ramitmittal/sorted",
   "icons": {
     "64": "icons/icon-64.png"
