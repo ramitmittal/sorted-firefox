@@ -3,8 +3,6 @@
 *Sorted is an extension that makes organizing bookmarks easier. It is designed to fit inside the existing bookmarks model and stay out of the user's way.  
 Sorted has zero configuration and zero background processing. It will only work when the user clicks on the extension's icon.*  
 
-**Help is always one [email](mailto:commitemailoframit@protonmail.com)  away.**
-
 ## [2.7.2] - 16 March 2020
 ### Fixes
 - Deletion of wrong folder due to wrong array indexing when user removes folder from UI.
