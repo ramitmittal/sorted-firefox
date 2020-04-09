@@ -38,4 +38,4 @@ Sorted is not available on Chrome Web Store. See the instructions below to set i
 * Inspired by [The Sorting Hat](https://www.pottermore.com/explore-the-story/the-sorting-hat).
 * The icon for Sorted is provided by [icons8](https://icons8.com).
 * Contributions and suggestions are welcome. Please consider opening an issue or submitting a pull request.
-* Author: Ramit Mittal - [email](mailto:commitemailoframit@protonmail.com) - [website](https://ramitmittal.tech)
+* Author: Ramit Mittal - [website](https://ramitmittal.tech)
