@@ -1,0 +1,10 @@
+{
+  "extensionName": {
+    "message": "Sorted",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Makes managing bookmarks easier by organizing them into folders based on keywords provided by the user.",
+    "description": "Description of the extension."
+  }
+}

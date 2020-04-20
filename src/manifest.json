@@ -1,23 +1,20 @@
 {
   "manifest_version": 2,
-  "name": "Sorted",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
   "version": "2.7.2",
-
-  "description": "Makes managing bookmarks easier by organizing them into folders based on keywords provided by the user.",
   "homepage_url": "https://gitlab.com/ramitmittal/sorted",
   "icons": {
     "64": "icons/icon-64.png"
   },
-
+  "default_locale": "en",
   "permissions": [
     "bookmarks"
   ],
-
   "browser_action": {
     "browser_style": true,
     "default_icon": "icons/icon-64.png",
     "default_title": "Sorted",
     "default_popup": "popup/popup.html"
   }
-
 }
