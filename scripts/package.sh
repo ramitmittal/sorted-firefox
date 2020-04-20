@@ -8,8 +8,13 @@ if [ "$validation_return_code" != 0 ]; then
   exit $validation_return_code
 fi
 
-npm run build
+# delete previous artifacts
 rm -rf artifacts
 mkdir artifacts
-find . -regextype posix-egrep -regex "./(package.json|README.md|src|scripts).*" -print0 | xargs -0 zip artifacts/sorted-$1-source.zip
+
+# bundle the extension
+npm run build
 web-ext build -s dist/ -a artifacts/
+
+# create zip of source code for upload during review
+find . -regextype posix-egrep -regex "./(package.json|README.md|src|scripts).*" -print0 | xargs -0 zip artifacts/sorted-$1-source.zip
