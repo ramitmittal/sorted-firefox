@@ -19,6 +19,26 @@ const unsortDialog = document.getElementById('unsort-dialog');
 const unsortAccept = document.getElementById('unsort-accept');
 const unsortReject = document.getElementById('unsort-reject');
 const learnMore = document.getElementById('learn-more');
+const inputHelper = document.getElementById('input-helper');
+const sortDialogText = document.getElementById('sort-dialog-text');
+const unsortDialogText = document.getElementById('unsort-dialog-text');
+const heading = document.getElementById('heading');
+
+/* Populate all text fields */
+const { i18n } = browser;
+heading.innerText = i18n.getMessage('extensionName');
+mainSortLink.innerText = i18n.getMessage('sortLinkText');
+mainUnsortLink.innerText = i18n.getMessage('unsortLinkText');
+learnMore.innerText = i18n.getMessage('learnMoreLinkText');
+unsortDialogText.innerText = i18n.getMessage('unsortDialogText');
+unsortAccept.innerText = i18n.getMessage('unsortAccept');
+unsortReject.innerText = i18n.getMessage('unsortReject');
+sortDialogText.innerText = i18n.getMessage('sortDialogText');
+inputHelper.innerText = i18n.getMessage('inputHelper');
+sortInput.placeholder = i18n.getMessage('sortInput');
+sortGo.innerText = i18n.getMessage('sortGo');
+
+console.log(i18n.getMessage('sortLinkText'));
 
 /**
  * Event listener when user deletes element from the sorted folders list in UI.

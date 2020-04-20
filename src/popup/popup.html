@@ -8,36 +8,26 @@
 <body>
 <div style="width:340px">
   <div class="dropdown-content" id="main-dialog">
-    <h4 class="dropdown-item is-size-5 margin-bottom-5" id="heading">
-      Sorted
-    </h4>
-    <a class="dropdown-item" id="main-sort-link">
-      Organize bookmarks
-    </a>
-    <a class="dropdown-item" id="main-unsort-link">
-      Flatten bookmarks
-    </a>
+    <h4 class="dropdown-item is-size-5 margin-bottom-5" id="heading"></h4>
+    <a class="dropdown-item" id="main-sort-link"></a>
+    <a class="dropdown-item" id="main-unsort-link"></a>
     <hr class="dropdown-divider">
-    <a class="dropdown-item" id="learn-more">
-      Learn more
-    </a>
+    <a class="dropdown-item" id="learn-more"></a>
   </div>
   <div class="content padding-15" hidden id="unsort-dialog">
-    <p class="has-text-grey-dark margin-top-15" id="unsort-dialog-text">This will delete all sorted folders,
-      moving the bookmarks back to their original location.</p>
+    <p class="has-text-grey-dark margin-top-15" id="unsort-dialog-text"></p>
     <div>
-      <button class="button is-small is-light" id="unsort-accept" style="margin-right:10px;">Accept</button>
-      <button class="button is-small is-dark" id="unsort-reject">Reject</button>
+      <button class="button is-small is-light" id="unsort-accept" style="margin-right:10px;"></button>
+      <button class="button is-small is-dark" id="unsort-reject"></button>
     </div>
   </div>
   <div class="content padding-15" hidden id="sort-dialog">
-    <p class="has-text-grey-dark margin-top-15" id="sort-dialog-text">Create tags to sort your bookmarks.</p>
+    <p class="has-text-grey-dark margin-top-15" id="sort-dialog-text"></p>
     <div id="sort-list" class="tags margin-bottom-5 padding-horizontal-10 margin-horizontal-10"></div>
-      <p id="input-helper">Type comma separated keywords and press Enter</p>
-      <input class="input is-small" id="sort-input" placeholder="tech, programming, software"
-             type="text">
+      <p id="input-helper"></p>
+      <input class="input is-small" id="sort-input" placeholder="" type="text">
     <div class="has-text-right margin-top-10 padding-horizontal-10">
-      <button class="button is-small is-dark" id="sort-go">Sort</button>
+      <button class="button is-small is-dark" id="sort-go"></button>
     </div>
   </div>
 </div>
