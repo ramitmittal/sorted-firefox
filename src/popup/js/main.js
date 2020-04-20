@@ -9,8 +9,8 @@ import {
 import * as config from '../../config.json';
 
 const mainDialog = document.getElementById('main-dialog');
-const mainSortLink = document.getElementById('main-sortlink');
-const mainUnsortLink = document.getElementById('main-unsortlink');
+const mainSortLink = document.getElementById('main-sort-link');
+const mainUnsortLink = document.getElementById('main-unsort-link');
 const sortDialog = document.getElementById('sort-dialog');
 const sortList = document.getElementById('sort-list');
 const sortGo = document.getElementById('sort-go');
