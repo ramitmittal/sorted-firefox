@@ -14,7 +14,7 @@
   "browser_action": {
     "browser_style": true,
     "default_icon": "icons/icon-64.png",
-    "default_title": "Sorted",
+    "default_title": "__MSG_extensionName__",
     "default_popup": "popup/popup.html"
   }
 }
