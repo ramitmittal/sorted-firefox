@@ -9,7 +9,7 @@
 <body>
 <div style="width:340px">
   <div class="dropdown-content" id="main-dialog">
-    <h4 class="dropdown-item is-size-5 margin-bottom-5">
+    <h4 class="dropdown-item is-size-5 margin-bottom-5" id="heading">
       Sorted
     </h4>
     <a class="dropdown-item" id="main-sort-link">
@@ -24,7 +24,7 @@
     </a>
   </div>
   <div class="content padding-15" hidden id="unsort-dialog">
-    <p class="has-text-grey-dark margin-top-15">This will delete all sorted folders,
+    <p class="has-text-grey-dark margin-top-15" id="unsort-dialog-text">This will delete all sorted folders,
       moving the bookmarks back to their original location.</p>
     <div>
       <button class="button is-small is-light" id="unsort-accept" style="margin-right:10px;">Accept</button>
@@ -32,7 +32,7 @@
     </div>
   </div>
   <div class="content padding-15" hidden id="sort-dialog">
-    <p class="has-text-grey-dark margin-top-15">Create tags to sort your bookmarks.</p>
+    <p class="has-text-grey-dark margin-top-15" id="sort-dialog-text">Create tags to sort your bookmarks.</p>
     <div id="sort-list" class="tags margin-bottom-5 padding-horizontal-10 margin-horizontal-10"></div>
       <p id="input-helper">Type comma separated keywords and press Enter</p>
       <input class="input is-small" id="sort-input" placeholder="tech, programming, software"
