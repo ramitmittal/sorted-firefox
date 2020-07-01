@@ -14,7 +14,7 @@ mkdir dist artifacts
 
 cp -r src/manifest.json src/icons src/_locales dist
 
-parcel build src/popup/popup.html --public-url '.' --out-dir dist/popup --no-source-maps &
+parcel build src/popup/popup.html --public-url '.' --out-dir dist/popup --no-source-maps
 
 web-ext lint -s dist/
 
