@@ -3,6 +3,12 @@
 *Sorted is an extension that makes organizing bookmarks easier. It is designed to fit inside the existing bookmarks model and stay out of the user's way.  
 Sorted has zero configuration and zero background processing. It will only work when the user clicks on the extension's icon.*  
 
+## [2.8.1] - 1 Jul 2020
+### What's new
+- A new webextension icon
+### Fixes
+- Flatten bookmarks has been fixed
+
 ## [2.8.0] - 20 April 2020
 - Laid groundwork for adding localized messages.
 

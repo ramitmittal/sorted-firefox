@@ -10,31 +10,24 @@
   "license": "GPL-3.0-or-later",
   "private": true,
   "scripts": {
-    "build": "bash scripts/build.sh",
-    "prestart": "npm run build",
-    "start": "web-ext run -s dist/",
-    "zip": "bash scripts/package.sh $npm_package_version"
+    "build": "./scripts/build.sh",
+    "dev": "./scripts/dev.sh"
   },
   "bugs": {
     "url": "https://gitlab.com/ramitmittal/sorted/issues"
   },
   "homepage": "https://gitlab.com/ramitmittal/sorted",
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.7",
-    "@babel/plugin-transform-runtime": "^7.7.4",
-    "@babel/polyfill": "^7.8.7",
-    "@babel/preset-env": "^7.8.7",
-    "@babel/runtime": "^7.8.7",
-    "bulma": "^0.7.5",
-    "cssnano": "^4.1.10",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.20.1",
-    "events": "^3.1.0",
-    "lodash": "^4.17.15",
+    "@babel/core": "^7.10.2",
     "parcel-bundler": "^1.12.4",
-    "sass": "^1.26.3",
-    "web-ext": "^3.2.1"
-  }
+    "sass": "^1.26.9",
+    "standard": "^14.3.4",
+    "web-ext": "^4.3.0"
+  },
+  "dependencies": {
+    "bulma": "^0.9.0",
+    "events": "^3.1.0",
+    "lodash": "^4.17.15"
+  },
+  "browserslist": "Firefox ESR"
 }
