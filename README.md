@@ -16,7 +16,7 @@ Install from [addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon
 
 ## Meta
 * Distributed under GNU GPLv3. See **LICENSE** for more information.
-* Inspired by [The Sorting Hat](https://www.pottermore.com/explore-the-story/the-sorting-hat).
+* Inspired by [The Sorting Hat](https://harrypotter.fandom.com/wiki/Sorting_Hat).
 * The icon for Sorted is provided by [Unicons](https://iconscout.com/unicons).
 * Contributions and suggestions are welcome. Please consider opening an issue or submitting a pull request.
 * Author: Ramit Mittal - [website](https://www.ramitmittal.com)
