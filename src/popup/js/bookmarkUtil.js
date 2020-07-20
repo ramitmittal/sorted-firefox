@@ -1,8 +1,8 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* global browser */
+
 import * as fp from 'lodash/fp'
 import EventEmitter from 'events'
 
-// eslint-disable-next-line no-undef
 const { bookmarks } = browser
 
 let otherBookmarksId // the Id of the "Other Bookmarks" folder

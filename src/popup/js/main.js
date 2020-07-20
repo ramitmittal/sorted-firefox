@@ -1,3 +1,5 @@
+/* global browser */
+
 import {
   sortedBookmarkFoldersEmitter,
   flattenAll,
