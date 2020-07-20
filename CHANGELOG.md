@@ -2,6 +2,9 @@
 
 You have reached the **CHANGELOG** of **Sorted**, a webextension to organize bookmarks. To find help, submit issues or feedback check out the [README](README.md). To learn about recent changes in the project, keep reading.
 
+## [2.8.2] - 20 Jul 2020
+- Minor fixes in documentation and repository links
+
 ## [2.8.1] - 1 Jul 2020
 ### What's new
 - A new webextension icon
