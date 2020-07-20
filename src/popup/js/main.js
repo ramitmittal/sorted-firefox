@@ -138,7 +138,7 @@ function initListeners () {
   })
   learnMore.addEventListener('click', async (event) => {
     // eslint-disable-next-line no-undef
-    browser.tabs.create({ url: config.changelogUrl })
+    browser.tabs.create({ url: config.homepageUrl })
     event.preventDefault()
   })
 }
