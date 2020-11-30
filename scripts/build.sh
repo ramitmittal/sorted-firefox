@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-# prepare source and distribution zip archives for upload to addons.mozilla.org
-
+# validate version codes
 node scripts/validate
 validation_return_code=$?
 if [ "$validation_return_code" != 0 ]; then
@@ -9,7 +8,7 @@ if [ "$validation_return_code" != 0 ]; then
 fi
 
 # delete previous artifacts
-rm -rf dist/ artifacts/
+rm -rf dist artifacts
 mkdir dist artifacts
 
 cp -r src/manifest.json src/icons src/_locales dist
