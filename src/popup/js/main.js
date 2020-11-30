@@ -8,8 +8,6 @@ import {
   sortAll
 } from './bookmarkUtil'
 
-import * as config from '../../config.json'
-
 const mainDialog = document.getElementById('main-dialog')
 const mainSortLink = document.getElementById('main-sort-link')
 const mainUnsortLink = document.getElementById('main-unsort-link')
@@ -138,7 +136,7 @@ function initListeners () {
   })
   learnMore.addEventListener('click', async (event) => {
     // eslint-disable-next-line no-undef
-    browser.tabs.create({ url: config.homepageUrl })
+    browser.tabs.create({ url: process.env.HOMEPAGE_URL })
     event.preventDefault()
   })
 }
