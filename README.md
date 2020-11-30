@@ -5,7 +5,7 @@ A web extension to organize bookmarks into folders based on user specified tags/
 Sorted has zero configuration and zero background processing. It will only work when the user clicks on the extension's icon.*
 
 ## Screenshots
-Some screenshots can be found [here](https://ramitmittal.github.io/sorted-firefox/).
+Some screenshots can be found [here](https://www.ramitmittal.com/pages/projects/sorted-firefox/).
 
 ## Usage
 Install from [addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon/sorted/).
