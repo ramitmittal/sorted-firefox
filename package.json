@@ -11,9 +11,9 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "parcel-bundler": "^1.12.4",
-    "sass": "^1.29.0",
+    "sass": "^1.30.0",
     "standard": "^16.0.3",
-    "web-ext": "^5.4.0"
+    "web-ext": "^5.4.1"
   },
   "dependencies": {
     "bulma": "^0.9.1",
