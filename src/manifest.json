@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "2.9.0",
+  "homepage_url": "https://ramitmittal.com/pages/projects/sorted-firefox/",
+  "icons": {
+    "96": "icons/icon-96.png",
+    "64": "icons/icon-64.png",
+    "48": "icons/icon-48.png"
+  },
+  "default_locale": "en",
+  "permissions": [
+    "bookmarks"
+  ],
+  "browser_action": {
+    "browser_style": true,
+    "default_icon": "icons/icon-64.png",
+    "default_title": "__MSG_extensionName__",
+    "default_popup": "popup/popup.html"
+  }
+}

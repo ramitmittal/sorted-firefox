@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="./custom.css">
+</head>
+
+<body>
+<div style="width:340px">
+  <div class="dropdown-content" id="main-dialog">
+    <h4 class="dropdown-item is-size-5 margin-bottom-5" id="heading"></h4>
+    <a class="dropdown-item" id="main-sort-link"></a>
+    <a class="dropdown-item" id="main-unsort-link"></a>
+    <hr class="dropdown-divider">
+    <a class="dropdown-item" id="learn-more"></a>
+  </div>
+  <div class="content padding-15" hidden id="unsort-dialog">
+    <p class="has-text-grey-dark margin-top-15" id="unsort-dialog-text"></p>
+    <div>
+      <button class="button is-small is-light" id="unsort-accept" style="margin-right:10px;"></button>
+      <button class="button is-small is-dark" id="unsort-reject"></button>
+    </div>
+  </div>
+  <div class="content padding-15" hidden id="sort-dialog">
+    <p class="has-text-grey-dark margin-top-15" id="sort-dialog-text"></p>
+    <div id="sort-list" class="tags margin-bottom-5 padding-horizontal-10 margin-horizontal-10"></div>
+      <p id="input-helper"></p>
+      <input class="input is-small" id="sort-input" placeholder="" type="text">
+    <div class="has-text-right margin-top-10 padding-horizontal-10">
+      <button class="button is-small is-dark" id="sort-go"></button>
+    </div>
+  </div>
+</div>
+<script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "sorted",
+  "version": "2.9.0",
+  "description": "A web-extension for organizing bookmarks.",
+  "author": "Ramit Mittal <commitemailoframit@protonmail.com>",
+  "license": "GPL-3.0-or-later",
+  "private": true,
+  "scripts": {
+    "build": "./scripts/build.sh",
+    "dev": "./scripts/dev.sh"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "parcel-bundler": "^1.12.5",
+    "standard": "^16.0.3",
+    "web-ext": "^6.1.0"
+  },
+  "dependencies": {
+    "bulma": "^0.9.2",
+    "events": "^3.3.0",
+    "lodash": "^4.17.21"
+  },
+  "browserslist": "Firefox ESR"
+}

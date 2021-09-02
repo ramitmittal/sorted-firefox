@@ -1,0 +1,50 @@
+{
+  "extensionName": {
+    "message": "Sorted",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "Makes managing bookmarks easier by organizing them into folders based on keywords provided by the user.",
+    "description": "Description of the extension"
+  },
+  "sortLinkText": {
+    "message": "Organize bookmarks",
+    "description": "Text of 'Organize bookmarks' link"
+  },
+  "unsortLinkText": {
+    "message": "Flatten bookmarks",
+    "description": "Text of 'Flatten bookmarks' link"
+  },
+  "learnMoreLinkText": {
+    "message": "Learn more",
+    "description": "Text of 'Learn more' link"
+  },
+  "unsortDialogText": {
+    "message": "This will delete all sorted folders moving the bookmarks they contain to one of the default folders.",
+    "description": "Main text on the flatten dialog"
+  },
+  "unsortAccept": {
+    "message": "Accept",
+    "description": "Text of OK button on the flatten dialog"
+  },
+  "unsortReject": {
+    "message": "Reject",
+    "description": "Text of cancel button on the flatten dialog"
+  },
+  "sortDialogText": {
+    "message": "Create tags to sort your bookmarks.",
+    "description": "Main text on the sort dialog"
+  },
+  "inputHelper": {
+    "message": "Type comma separated keywords and press Enter",
+    "description": "Helper text above the input on sorting dialog"
+  },
+  "sortInput": {
+    "message": "tech, programming, software",
+    "description": "Text of placeholder of input on the sorting dialog"
+  },
+  "sortGo": {
+    "message": "Sort",
+    "description": "Text of action button on the sorting dialog"
+  }
+}
